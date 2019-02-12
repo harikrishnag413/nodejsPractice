@@ -2,12 +2,12 @@ var express = require('express');
 var app = express();
 var fs=require('fs');
 
-app.get('/', function (req, res){
+app.delete('/', function (req, res){
 
-  fs.writeFile('input.txt', '', function(err){
+  fs.uplink('input1.txt', function(err){
     if(err){response=err;}
     else{
-      response="write successfull";
+      response="Delete successfull";
      }
      res.send(response);
   })
