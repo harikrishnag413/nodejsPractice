@@ -51,8 +51,8 @@ app.put('/', function(req, res){
      var db = client.db('hari');
      console.log('connected correctly to server');
 
-     if(!err){var id= db.collection('movies')}
-        id.Update({"_id" : ObjectId("5c6a7b73622feb6bc19f27b2")},{"title":"ffff"},{upsert:true},function(err,result){
+     if(!err){var movies= db.collection('movies')}
+        movies.update({"_id" : "5c6a7b73622feb6bc19f27b2"},{"title":"ffff"},{upsert:true},function(err,result){
           console.log("put successfully");
           console.log(err);
           client.close();
