@@ -22,11 +22,9 @@ console.log(req.query);
         id.insert({"title":"ff9"},function(err,result){
           console.log(result);
           console.log(err);
-        })//.toArray(function(err,docs){
-        //  console.log(docs);
+        })
           client.close();
-        //});
-  });
+    });
 
 });
 
@@ -52,15 +50,11 @@ app.put('/', function(req, res){
      console.log('connected correctly to server');
 
      if(!err){var movies= db.collection('movies')}
-        movies.update({"_id" : "5c6a7b73622feb6bc19f27b2"},{"title":"ffff"},{upsert:true},function(err,result){
+        movies.update({"_id" :"5c6a7b73622feb6bc19f27b2"},{"title":"ffff"},{upsert:true},function(err,result){
           console.log("put successfully");
           console.log(err);
           client.close();
-        });//.toArray(docs);
-        //toString(function(err,docs){
-        //  console.log(docs);
-
-      //  });
+        });
 });
 });
 
@@ -74,8 +68,7 @@ app.delete('/', function(req, res){
      if(!err){var id= db.collection('movies')}
         id.remove({"title":"ff4"},function(err,result){
           console.log("delete successfully");
-          console.log(err);//.toArray(function(err,docs){
-                //console.log(docs);
+          console.log(err);
                 client.close();
        });
 });
