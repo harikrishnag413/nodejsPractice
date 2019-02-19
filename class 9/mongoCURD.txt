@@ -1,0 +1,42 @@
+> use hari
+switched to db hari
+> db.createCollection("movies");
+{ "ok" : 1 }
+> db.movies.insert({title:"ff1"});
+WriteResult({ "nInserted" : 1 })
+> db.movies.insert({title:"ff2"});
+WriteResult({ "nInserted" : 1 })
+> db.movies.insert({title:"ff3"});
+WriteResult({ "nInserted" : 1 })
+> db.movies.insert({title:"ff4"});
+WriteResult({ "nInserted" : 1 })
+> db.movies.insert({title:"ff2"});
+WriteResult({ "nInserted" : 1 })
+> db.movies.find();
+{ "_id" : ObjectId("5c6a7b53622feb6bc19f27ae"), "title" : "ff1" }
+{ "_id" : ObjectId("5c6a7b5c622feb6bc19f27af"), "title" : "ff2" }
+{ "_id" : ObjectId("5c6a7b64622feb6bc19f27b0"), "title" : "ff3" }
+{ "_id" : ObjectId("5c6a7b6b622feb6bc19f27b1"), "title" : "ff4" }
+{ "_id" : ObjectId("5c6a7b73622feb6bc19f27b2"), "title" : "ff2" }
+> db.movies.update({title:"ff2"}, {$set:{"title":"bahubali5"}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.movies.find();
+{ "_id" : ObjectId("5c6a7b53622feb6bc19f27ae"), "title" : "ff1" }
+{ "_id" : ObjectId("5c6a7b5c622feb6bc19f27af"), "title" : "bahubali5" }
+{ "_id" : ObjectId("5c6a7b64622feb6bc19f27b0"), "title" : "ff3" }
+{ "_id" : ObjectId("5c6a7b6b622feb6bc19f27b1"), "title" : "ff4" }
+{ "_id" : ObjectId("5c6a7b73622feb6bc19f27b2"), "title" : "ff2" }
+> db.movies.update({title:"bahubali5"}, {$set:{"title":"ff5"}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.movies.find();
+{ "_id" : ObjectId("5c6a7b53622feb6bc19f27ae"), "title" : "ff1" }
+{ "_id" : ObjectId("5c6a7b5c622feb6bc19f27af"), "title" : "ff5" }
+{ "_id" : ObjectId("5c6a7b64622feb6bc19f27b0"), "title" : "ff3" }
+{ "_id" : ObjectId("5c6a7b6b622feb6bc19f27b1"), "title" : "ff4" }
+{ "_id" : ObjectId("5c6a7b73622feb6bc19f27b2"), "title" : "ff2" }
+> db.movies.count();
+5
+
+> db.movies.distinct("title");
+[ "ff1", "ff5", "ff3", "ff4", "ff2" ]
+> db.movies.find.sort("title");

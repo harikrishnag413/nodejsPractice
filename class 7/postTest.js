@@ -3,7 +3,7 @@ var app = require('./POSTcall.js').app
 var expect = require('chai').expect;
 
 describe('postRequestTest', function(){
-  it('should fetch file details', function (done) {
+  it('should send file deta', function (done) {
     request(app)
                  .post('/')
                 .expect(200)
